@@ -94,10 +94,11 @@ function App() {
       setLoading(true);
       setError(null);
       
-      const isDevelopment = process.env.NODE_ENV === 'development';
-      const apiUrl = isDevelopment 
+      // Use proxy in development, direct URL in production
+      // Vercel will handle /api/* routes via rewrites
+      const apiUrl = process.env.NODE_ENV === 'development'
         ? '/api/Voter/fetch_voter_data1.php'
-        : 'https://xtend.online/Voter/fetch_voter_data1.php';
+        : '/api/Voter/fetch_voter_data1.php';
       
       const response = await axios.get(apiUrl, {
         timeout: 90000,

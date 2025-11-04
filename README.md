@@ -51,6 +51,36 @@ http://localhost:3000
 npm run build
 ```
 
+## Deploy to Vercel
+
+1. Install Vercel CLI:
+```bash
+npm i -g vercel
+```
+
+2. Deploy:
+```bash
+vercel
+```
+
+Or connect your GitHub repository directly on [Vercel](https://vercel.com)
+
+### Vercel Configuration
+
+- Framework Preset: Create React App
+- Build Command: `npm run build`
+- Output Directory: `build`
+- Install Command: `npm install`
+
+The project includes `vercel.json` with API proxy configuration for CORS handling.
+
+## API Configuration
+
+The app uses Vercel rewrites to proxy API requests:
+- `/api/*` → `https://xtend.online/*`
+
+This handles CORS issues in production.
+
 ## License
 
 MIT
